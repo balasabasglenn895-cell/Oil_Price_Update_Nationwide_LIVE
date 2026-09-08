@@ -1,0 +1,1098 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Cash Assistance for College Students | Canlaon City</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      --primary: #0b5ed7;
+      --primary-dark: #084298;
+      --success: #198754;
+      --warning: #ffc107;
+      --dark: #172033;
+      --muted: #667085;
+      --light: #f5f7fb;
+      --white: #ffffff;
+      --border: #e5e7eb;
+      --shadow: 0 12px 35px rgba(16, 24, 40, 0.08);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(
+          circle at top right,
+          rgba(11, 94, 215, 0.10),
+          transparent 35%
+        ),
+        var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      padding-bottom: 40px;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      background:
+        linear-gradient(
+          135deg,
+          #063b91,
+          #0b5ed7 55%,
+          #2f80ed
+        );
+
+      color: white;
+      padding: 34px 20px 55px;
+      border-radius: 0 0 35px 35px;
+
+      box-shadow:
+        0 12px 35px rgba(11, 94, 215, 0.25);
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .hero::before {
+      width: 220px;
+      height: 220px;
+      right: -90px;
+      top: -90px;
+    }
+
+    .hero::after {
+      width: 160px;
+      height: 160px;
+      left: -80px;
+      bottom: -100px;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+
+      padding: 8px 13px;
+      border-radius: 999px;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      margin-bottom: 18px;
+
+      backdrop-filter: blur(8px);
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 7vw, 54px);
+      line-height: 1.08;
+      letter-spacing: -1.5px;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      color: #ffe082;
+    }
+
+    .hero p {
+      max-width: 700px;
+      font-size: 16px;
+      opacity: 0.94;
+    }
+
+    /* =========================
+       MAIN CONTAINER
+    ========================= */
+
+    .container {
+      max-width: 900px;
+      margin: -28px auto 0;
+      padding: 0 16px;
+      position: relative;
+      z-index: 5;
+    }
+
+    /* =========================
+       QUICK INFO
+    ========================= */
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .info-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 19px;
+
+      box-shadow: var(--shadow);
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .info-card:active {
+      transform: scale(0.97);
+    }
+
+    .info-icon {
+      width: 43px;
+      height: 43px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 13px;
+
+      background: #eaf2ff;
+      color: var(--primary);
+
+      font-size: 21px;
+      margin-bottom: 11px;
+    }
+
+    .info-card small {
+      color: var(--muted);
+      display: block;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .info-card strong {
+      display: block;
+      margin-top: 3px;
+      font-size: 15px;
+    }
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    .section {
+      margin-top: 25px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 13px;
+    }
+
+    .section-title h2 {
+      font-size: 22px;
+      letter-spacing: -0.4px;
+    }
+
+    .section-title .line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* =========================
+       SCHEDULE
+    ========================= */
+
+    .schedule {
+      display: grid;
+      gap: 15px;
+    }
+
+    .day-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+
+      overflow: hidden;
+
+      box-shadow: var(--shadow);
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .day-card:active {
+      transform: scale(0.985);
+    }
+
+    .day-header {
+      padding: 17px 19px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      background:
+        linear-gradient(
+          135deg,
+          #f0f6ff,
+          #ffffff
+        );
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .day-number {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .day-number .circle {
+      width: 42px;
+      height: 42px;
+
+      background: var(--primary);
+      color: white;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border-radius: 13px;
+
+      font-weight: 800;
+    }
+
+    .day-header h3 {
+      font-size: 18px;
+    }
+
+    .day-header p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .day-label {
+      font-size: 12px;
+      font-weight: 800;
+
+      color: var(--primary);
+      background: #eaf2ff;
+
+      padding: 7px 10px;
+      border-radius: 999px;
+    }
+
+    .barangays {
+      padding: 16px;
+
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 9px;
+    }
+
+    .barangay {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+
+      background: #f8fafc;
+      border: 1px solid #edf0f4;
+
+      padding: 11px 12px;
+
+      border-radius: 13px;
+
+      font-size: 14px;
+      font-weight: 650;
+
+      transition: 0.2s ease;
+    }
+
+    .barangay:active {
+      background: #eaf2ff;
+      transform: scale(0.97);
+    }
+
+    .barangay span {
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: var(--success);
+
+      flex-shrink: 0;
+    }
+
+    /* =========================
+       LOCATION
+    ========================= */
+
+    .location-card {
+      background: white;
+
+      border-radius: 22px;
+      border: 1px solid var(--border);
+
+      box-shadow: var(--shadow);
+
+      overflow: hidden;
+    }
+
+    .location-top {
+      padding: 22px;
+    }
+
+    .location-title {
+      font-size: 13px;
+
+      text-transform: uppercase;
+
+      color: var(--muted);
+
+      font-weight: 800;
+
+      letter-spacing: 0.6px;
+
+      margin-bottom: 7px;
+    }
+
+    .location-name {
+      font-size: 21px;
+      font-weight: 800;
+    }
+
+    .location-sub {
+      color: var(--muted);
+
+      margin-top: 4px;
+
+      font-size: 15px;
+    }
+
+    .location-highlight {
+      margin: 0 20px 20px;
+
+      padding: 14px 15px;
+
+      background: #f0f6ff;
+
+      border: 1px solid #dbeafe;
+
+      border-radius: 14px;
+
+      color: var(--primary-dark);
+
+      font-size: 14px;
+
+      font-weight: 650;
+
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    /* =========================
+       REQUIREMENTS
+    ========================= */
+
+    .requirements {
+      background: white;
+
+      border: 1px solid var(--border);
+
+      border-radius: 22px;
+
+      padding: 19px;
+
+      box-shadow: var(--shadow);
+    }
+
+    .requirement {
+      display: flex;
+
+      gap: 13px;
+
+      align-items: flex-start;
+
+      padding: 13px 0;
+
+      border-bottom: 1px solid #edf0f4;
+    }
+
+    .requirement:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .req-number {
+      min-width: 34px;
+      height: 34px;
+
+      background: #eaf2ff;
+      color: var(--primary);
+
+      border-radius: 10px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-weight: 800;
+    }
+
+    .requirement strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .requirement p {
+      color: var(--muted);
+
+      font-size: 13px;
+
+      margin-top: 2px;
+    }
+
+    /* =========================
+       NOTICE
+    ========================= */
+
+    .notice {
+      margin-top: 20px;
+
+      padding: 18px;
+
+      border-radius: 20px;
+
+      background: #fff8e1;
+
+      border: 1px solid #ffe082;
+
+      display: flex;
+
+      gap: 13px;
+
+      align-items: flex-start;
+    }
+
+    .notice-icon {
+      font-size: 22px;
+    }
+
+    .notice strong {
+      color: #8a5b00;
+
+      display: block;
+
+      margin-bottom: 3px;
+    }
+
+    .notice p {
+      font-size: 14px;
+
+      color: #684700;
+    }
+
+    /* =========================
+       CREDIT
+    ========================= */
+
+    .credit {
+      margin-top: 25px;
+
+      text-align: center;
+
+      background:
+        linear-gradient(
+          135deg,
+          #172033,
+          #283750
+        );
+
+      color: white;
+
+      padding: 23px 18px;
+
+      border-radius: 22px;
+
+      box-shadow: var(--shadow);
+    }
+
+    .credit small {
+      display: block;
+
+      opacity: 0.65;
+
+      font-size: 11px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1px;
+
+      margin-bottom: 5px;
+    }
+
+    .credit strong {
+      font-size: 16px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      text-align: center;
+
+      margin-top: 25px;
+
+      color: var(--muted);
+
+      font-size: 12px;
+
+      padding: 0 15px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 650px) {
+
+      .hero {
+        padding: 28px 18px 50px;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .info-card {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+      }
+
+      .info-icon {
+        margin: 0;
+        flex-shrink: 0;
+      }
+
+      .barangays {
+        grid-template-columns: 1fr;
+      }
+
+      .day-header {
+        align-items: flex-start;
+      }
+
+      .day-label {
+        font-size: 10px;
+      }
+
+      .container {
+        padding: 0 13px;
+      }
+    }
+
+    /* =========================
+       SMALL PHONES
+    ========================= */
+
+    @media (max-width: 390px) {
+
+      .hero h1 {
+        font-size: 30px;
+      }
+
+      .day-header {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .day-label {
+        align-self: flex-start;
+      }
+    }
+
+    a,
+    button {
+      touch-action: manipulation;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <header class="hero">
+
+    <div class="hero-content">
+
+      <div class="badge">
+        🎓 COLLEGE STUDENT ASSISTANCE
+      </div>
+
+      <h1>
+        Cash Assistance<br>
+        <span>Officially Open</span>
+      </h1>
+
+      <p>
+        Information and schedule for college students
+        applying for cash assistance in Canlaon City.
+      </p>
+
+    </div>
+
+  </header>
+
+
+  <main class="container">
+
+    <!-- =========================
+         QUICK INFORMATION
+    ========================= -->
+
+    <section class="info-grid">
+
+      <div class="info-card">
+
+        <div class="info-icon">
+          📅
+        </div>
+
+        <div>
+          <small>Distribution Dates</small>
+          <strong>September 9–10, 2026</strong>
+        </div>
+
+      </div>
+
+
+      <div class="info-card">
+
+        <div class="info-icon">
+          🕗
+        </div>
+
+        <div>
+          <small>Time</small>
+          <strong>8:30 AM – 5:00 PM</strong>
+        </div>
+
+      </div>
+
+
+      <div class="info-card">
+
+        <div class="info-icon">
+          📍
+        </div>
+
+        <div>
+          <small>City</small>
+          <strong>Canlaon City</strong>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         DISTRIBUTION SCHEDULE
+    ========================= -->
+
+    <section class="section">
+
+      <div class="section-title">
+
+        <h2>
+          📋 Distribution Schedule
+        </h2>
+
+        <div class="line"></div>
+
+      </div>
+
+
+      <div class="schedule">
+
+        <!-- DAY 1 -->
+
+        <article class="day-card">
+
+          <div class="day-header">
+
+            <div class="day-number">
+
+              <div class="circle">
+                1
+              </div>
+
+              <div>
+
+                <h3>
+                  September 9
+                </h3>
+
+                <p>
+                  Day 1 • Barangay Schedule
+                </p>
+
+              </div>
+
+            </div>
+
+            <div class="day-label">
+              DAY 1
+            </div>
+
+          </div>
+
+
+          <div class="barangays">
+
+            <div class="barangay">
+              <span></span>
+              Pula
+            </div>
+
+            <div class="barangay">
+              <span></span>
+              Malaiba
+            </div>
+
+            <div class="barangay">
+              <span></span>
+              Lumapao
+            </div>
+
+            <div class="barangay">
+              <span></span>
+              Masulog
+            </div>
+
+            <div class="barangay">
+              <span></span>
+              Budlasan
+            </div>
+
+            <div class="barangay">
+              <span></span>
+              Bucalan
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- DAY 2 -->
+
+        <article class="day-card">
+
+          <div class="day-header">
+
+            <div class="day-number">
+
+              <div class="circle">
+                2
+              </div>
+
+              <div>
+
+                <h3>
+                  September 10
+                </h3>
+
+                <p>
+                  Day 2 • Barangay Schedule
+                </p>
+
+              </div>
+
+            </div>
+
+            <div class="day-label">
+              DAY 2
+            </div>
+
+          </div>
+
+
+          <div class="barangays">
+
+            <div class="barangay">
+              <span></span>
+              Ninoy Aquino
+            </div>
+
+            <div class="barangay">
+              <span></span>
+              Mabigo
+            </div>
+
+            <div class="barangay">
+              <span></span>
+              Bayog
+            </div>
+
+            <div class="barangay">
+              <span></span>
+              Panubigan
+            </div>
+
+            <div class="barangay">
+              <span></span>
+              Binalbagan
+            </div>
+
+            <div class="barangay">
+              <span></span>
+              Linothangan
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CLAIMING LOCATION
+    ========================= -->
+
+    <section class="section">
+
+      <div class="section-title">
+
+        <h2>
+          📍 Claiming Location
+        </h2>
+
+        <div class="line"></div>
+
+      </div>
+
+
+      <div class="location-card">
+
+        <div class="location-top">
+
+          <div class="location-title">
+            Where to claim your cash assistance
+          </div>
+
+          <div class="location-name">
+            Covered Court
+          </div>
+
+          <div class="location-sub">
+            Brgy. Binalbagan, Canlaon City
+          </div>
+
+        </div>
+
+
+        <div class="location-highlight">
+
+          📌
+
+          <span>
+            Please proceed to the Covered Court
+            in Brgy. Binalbagan during your assigned schedule.
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         REQUIREMENTS
+    ========================= -->
+
+    <section class="section">
+
+      <div class="section-title">
+
+        <h2>
+          📑 Requirements
+        </h2>
+
+        <div class="line"></div>
+
+      </div>
+
+
+      <div class="requirements">
+
+        <div class="requirement">
+
+          <div class="req-number">
+            1
+          </div>
+
+          <div>
+
+            <strong>
+              Barangay Certificate of Residency
+            </strong>
+
+            <p>
+              Bring 3 copies + Original Copy
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="requirement">
+
+          <div class="req-number">
+            2
+          </div>
+
+          <div>
+
+            <strong>
+              National ID
+            </strong>
+
+            <p>
+              Bring 3 copies, back-to-back
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="requirement">
+
+          <div class="req-number">
+            3
+          </div>
+
+          <div>
+
+            <strong>
+              Baon for Lunch
+            </strong>
+
+            <p>
+              Please bring your own lunch/baon.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         VERIFICATION NOTICE
+    ========================= -->
+
+    <section class="notice">
+
+      <div class="notice-icon">
+        ℹ️
+      </div>
+
+      <div>
+
+        <strong>
+          Important Verification
+        </strong>
+
+        <p>
+          To find out if you are included in the list,
+          you may visit your respective Barangay Hall
+          for verification.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CREDIT
+    ========================= -->
+
+    <section class="credit">
+
+      <small>
+        Information credited to
+      </small>
+
+      <strong>
+        Emmanuel "MM" Limkaichong Iway
+      </strong>
+
+    </section>
+
+
+    <footer>
+
+      Please bring all required documents and follow
+      the assigned barangay schedule.
+
+    </footer>
+
+  </main>
