@@ -1,4 +1,4 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -270,6 +270,45 @@
       border: 2px solid #ffd45c;
     }
 
+    /* WARNING */
+    .warning {
+      margin: 0 42px 28px;
+      padding: 20px 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      background: rgba(255,179,0,0.08);
+      border: 1px solid rgba(255,179,0,0.45);
+      border-left: 5px solid var(--gold);
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.18);
+    }
+
+    .warning-icon {
+      flex-shrink: 0;
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .warning-content {
+      min-width: 0;
+    }
+
+    .warning-title {
+      margin-bottom: 6px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .warning p {
+      color: #d4dadd;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
     /* SOURCES */
     .sources {
       margin: 0 42px 34px;
@@ -415,6 +454,24 @@
         padding: 5px 9px;
       }
 
+      .warning {
+        margin: 0 18px 24px;
+        padding: 18px;
+        gap: 12px;
+      }
+
+      .warning-icon {
+        font-size: 22px;
+      }
+
+      .warning-title {
+        font-size: 11px;
+      }
+
+      .warning p {
+        font-size: 12px;
+      }
+
       .sources {
         margin: 0 18px 24px;
         padding: 20px;
@@ -453,6 +510,10 @@
       .sticker {
         top: -8px;
         right: 12px;
+      }
+
+      .warning {
+        align-items: flex-start;
       }
     }
   </style>
@@ -583,6 +644,27 @@
         </div>
 
       </article>
+
+    </section>
+
+
+    <!-- WARNING -->
+    <section class="warning">
+
+      <div class="warning-icon">⚠️</div>
+
+      <div class="warning-content">
+
+        <div class="warning-title">
+          WARNING
+        </div>
+
+        <p>
+          Fuel prices may increase or decrease depending on the oil company,
+          station, location, and applicable price adjustments.
+        </p>
+
+      </div>
 
     </section>
 
