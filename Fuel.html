@@ -1,0 +1,954 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Fuel Price Update | September 8, 2026</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --green: #20c878;
+      --green-soft: rgba(32, 200, 120, 0.12);
+
+      --red: #ff4d5a;
+      --red-soft: rgba(255, 77, 90, 0.12);
+
+      --gold: #ffb300;
+      --gold-soft: rgba(255, 179, 0, 0.12);
+
+      --bg: #080b0d;
+      --card: #121619;
+      --text: #ffffff;
+      --muted: #9ba6ab;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+
+      min-height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      padding: 24px;
+
+      background:
+        radial-gradient(
+          circle at top right,
+          #263238,
+          transparent 45%
+        ),
+        linear-gradient(
+          135deg,
+          #080b0d,
+          #151a1e
+        );
+
+      color: var(--text);
+    }
+
+    /* =========================
+       MAIN CONTAINER
+    ========================= */
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+
+      background: rgba(18, 22, 25, 0.97);
+
+      border: 1px solid rgba(255, 255, 255, 0.08);
+
+      border-radius: 24px;
+
+      overflow: hidden;
+
+      box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.45);
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .header {
+      padding: 42px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #11171b,
+          #20282d
+        );
+
+      border-bottom:
+        1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .label {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      margin-bottom: 15px;
+
+      font-size: 13px;
+
+      font-weight: 800;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+    }
+
+    .label-dot {
+      width: 9px;
+      height: 9px;
+
+      border-radius: 50%;
+
+      background: var(--gold);
+
+      box-shadow:
+        0 0 12px rgba(255, 179, 0, 0.7);
+    }
+
+    h1 {
+      font-size:
+        clamp(36px, 6vw, 58px);
+
+      line-height: 1;
+
+      font-weight: 900;
+
+      letter-spacing: -2px;
+    }
+
+    .date-badge {
+      display: inline-block;
+
+      margin-top: 20px;
+
+      padding: 9px 15px;
+
+      border-radius: 8px;
+
+      background: var(--gold-soft);
+
+      border:
+        1px solid rgba(255, 179, 0, 0.35);
+
+      color: var(--gold);
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      letter-spacing: 1.5px;
+    }
+
+    .subtitle {
+      margin-top: 14px;
+
+      color: var(--muted);
+
+      font-size: 15px;
+
+      line-height: 1.5;
+    }
+
+    /* =========================
+       PRICE SECTION
+    ========================= */
+
+    .prices {
+      padding: 34px 42px 28px;
+
+      display: grid;
+
+      gap: 16px;
+    }
+
+    .fuel-card {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      padding: 24px 26px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.055),
+          rgba(255, 255, 255, 0.025)
+        );
+
+      border:
+        1px solid rgba(255, 255, 255, 0.09);
+
+      border-radius: 17px;
+
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .fuel-card:hover {
+      transform: translateY(-3px);
+    }
+
+    /* =========================
+       FUEL INFORMATION
+    ========================= */
+
+    .fuel-info {
+      display: flex;
+
+      align-items: center;
+
+      gap: 17px;
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+
+      flex-shrink: 0;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 14px;
+
+      font-size: 23px;
+
+      transition: 0.2s ease;
+    }
+
+    .fuel-name {
+      font-size: 20px;
+
+      font-weight: 800;
+    }
+
+    .fuel-type {
+      margin-top: 4px;
+
+      color: #8f9ba1;
+
+      font-size: 11px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1px;
+    }
+
+    /* =========================
+       PRICE DISPLAY
+    ========================= */
+
+    .price-area {
+      text-align: right;
+    }
+
+    .price {
+      font-size:
+        clamp(23px, 4vw, 31px);
+
+      font-weight: 900;
+
+      white-space: nowrap;
+    }
+
+    .price-label {
+      display: block;
+
+      margin-top: 4px;
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.7px;
+
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       INCREASE STYLE
+       GREEN
+    ========================= */
+
+    .increase .price {
+      color: var(--green);
+    }
+
+    .increase .price-label {
+      color: #75dca8;
+    }
+
+    .increase .icon {
+      background: var(--green-soft);
+
+      border:
+        1px solid rgba(32, 200, 120, 0.25);
+    }
+
+    .increase .fuel-card {
+      border-color:
+        rgba(32, 200, 120, 0.18);
+    }
+
+    /* =========================
+       DECREASE STYLE
+       RED
+    ========================= */
+
+    .decrease .price {
+      color: var(--red);
+    }
+
+    .decrease .price-label {
+      color: #ff8d96;
+    }
+
+    .decrease .icon {
+      background: var(--red-soft);
+
+      border:
+        1px solid rgba(255, 77, 90, 0.25);
+    }
+
+    /* =========================
+       MIXED ADJUSTMENT
+    ========================= */
+
+    .mixed .price {
+      color: var(--gold);
+    }
+
+    /* =========================
+       OFFICIAL SOURCES
+    ========================= */
+
+    .sources {
+      margin:
+        0 42px 34px;
+
+      padding: 23px 24px;
+
+      background:
+        rgba(255, 255, 255, 0.025);
+
+      border:
+        1px solid rgba(255, 255, 255, 0.07);
+
+      border-radius: 16px;
+    }
+
+    .sources-title {
+      margin-bottom: 14px;
+
+      color: #ffffff;
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      letter-spacing: 1.5px;
+
+      text-transform: uppercase;
+    }
+
+    .source-list {
+      display: grid;
+
+      gap: 9px;
+    }
+
+    .source-list a {
+      color: #b8c1c5;
+
+      text-decoration: none;
+
+      font-size: 13px;
+
+      transition: 0.2s ease;
+    }
+
+    .source-list a:hover {
+      color: var(--gold);
+    }
+
+    .source-list a::before {
+      content: "↗";
+
+      margin-right: 8px;
+
+      color: var(--gold);
+
+      font-weight: bold;
+    }
+
+    .source-note {
+      margin-top: 14px;
+
+      color: #68747a;
+
+      font-size: 10px;
+
+      line-height: 1.6;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .footer {
+      padding: 20px 42px;
+
+      background: #0c1013;
+
+      border-top:
+        1px solid rgba(255, 255, 255, 0.07);
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 15px;
+    }
+
+    .status {
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      color: #aeb7bc;
+
+      font-size: 12px;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: var(--green);
+
+      box-shadow:
+        0 0 10px rgba(32, 200, 120, 0.7);
+    }
+
+    .notice {
+      color: #68747a;
+
+      font-size: 11px;
+
+      text-align: right;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 600px) {
+
+      body {
+        padding: 14px;
+      }
+
+      .header {
+        padding: 30px 24px 27px;
+      }
+
+      .prices {
+        padding: 24px;
+      }
+
+      .fuel-card {
+        padding: 19px;
+      }
+
+      .fuel-info {
+        gap: 12px;
+      }
+
+      .icon {
+        width: 45px;
+        height: 45px;
+
+        font-size: 19px;
+      }
+
+      .fuel-name {
+        font-size: 17px;
+      }
+
+      .fuel-type {
+        font-size: 9px;
+      }
+
+      .price {
+        font-size: 21px;
+      }
+
+      .sources {
+        margin:
+          0 24px 24px;
+
+        padding: 20px;
+      }
+
+      .footer {
+        padding: 18px 24px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+      }
+
+      .notice {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 420px) {
+
+      .fuel-card {
+        align-items: flex-start;
+
+        flex-direction: column;
+      }
+
+      .price-area {
+        text-align: left;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="header">
+
+      <div class="label">
+        <span class="label-dot"></span>
+
+        Fuel Market Update
+      </div>
+
+      <h1 id="mainTitle">
+        Fuel Price Adjustment
+      </h1>
+
+      <div class="date-badge">
+        AS OF SEPTEMBER 8, 2026
+      </div>
+
+      <p class="subtitle" id="subtitle">
+        Latest adjustment in retail petroleum prices
+      </p>
+
+    </header>
+
+
+    <!-- =========================
+         FUEL PRICES
+    ========================== -->
+
+    <section class="prices">
+
+      <!-- GASOLINE -->
+
+      <article
+        class="fuel-card"
+        data-fuel="Gasoline"
+        data-change="4.69"
+      >
+
+        <div class="fuel-info">
+
+          <div class="icon">
+            ⛽
+          </div>
+
+          <div>
+
+            <div class="fuel-name">
+              Gasoline
+            </div>
+
+            <div class="fuel-type">
+              Petroleum Product
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="price-area">
+
+          <div class="price">
+            ₱4.69/L
+          </div>
+
+          <span class="price-label">
+            Adjustment per liter
+          </span>
+
+        </div>
+
+      </article>
+
+
+      <!-- DIESEL -->
+
+      <article
+        class="fuel-card"
+        data-fuel="Diesel"
+        data-change="5.18"
+      >
+
+        <div class="fuel-info">
+
+          <div class="icon">
+            🚛
+          </div>
+
+          <div>
+
+            <div class="fuel-name">
+              Diesel
+            </div>
+
+            <div class="fuel-type">
+              Petroleum Product
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="price-area">
+
+          <div class="price">
+            ₱5.18/L
+          </div>
+
+          <span class="price-label">
+            Adjustment per liter
+          </span>
+
+        </div>
+
+      </article>
+
+
+      <!-- KEROSENE -->
+
+      <article
+        class="fuel-card"
+        data-fuel="Kerosene"
+        data-change="5.58"
+      >
+
+        <div class="fuel-info">
+
+          <div class="icon">
+            🛢️
+          </div>
+
+          <div>
+
+            <div class="fuel-name">
+              Kerosene
+            </div>
+
+            <div class="fuel-type">
+              Petroleum Product
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="price-area">
+
+          <div class="price">
+            ₱5.58/L
+          </div>
+
+          <span class="price-label">
+            Adjustment per liter
+          </span>
+
+        </div>
+
+      </article>
+
+    </section>
+
+
+    <!-- =========================
+         OFFICIAL SOURCES
+    ========================== -->
+
+    <section class="sources">
+
+      <div class="sources-title">
+        Official Sources
+      </div>
+
+      <div class="source-list">
+
+        <a
+          href="https://doe.gov.ph/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Department of Energy (DOE)
+        </a>
+
+        <a
+          href="https://doe.gov.ph/oil-industry-management-bureau"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Oil Industry Management Bureau (OIMB)
+        </a>
+
+        <a
+          href="https://doe.gov.ph/data-and-prices/liquid-fuels/retail-pump-prices"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          DOE Retail Pump Prices
+        </a>
+
+      </div>
+
+      <p class="source-note">
+        Source: Department of Energy (DOE),
+        through the Oil Industry Management Bureau (OIMB).
+        Refer to official DOE releases for the latest
+        fuel price adjustments and applicable dates.
+      </p>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+      <div class="status">
+
+        <span class="status-dot"></span>
+
+        <span id="statusText">
+          Fuel price update
+        </span>
+
+      </div>
+
+      <div class="notice">
+
+        Amounts shown are adjustments per liter.
+
+      </div>
+
+    </footer>
+
+  </main>
+
+
+  <!-- =========================
+       AUTOMATIC PRICE LOGIC
+  ========================== -->
+
+  <script>
+
+    const cards =
+      document.querySelectorAll(".fuel-card");
+
+    const title =
+      document.getElementById("mainTitle");
+
+    const subtitle =
+      document.getElementById("subtitle");
+
+    const statusText =
+      document.getElementById("statusText");
+
+
+    let changes = [];
+
+
+    cards.forEach(card => {
+
+      const change =
+        parseFloat(card.dataset.change);
+
+      const price =
+        card.querySelector(".price");
+
+      const label =
+        card.querySelector(".price-label");
+
+      changes.push(change);
+
+
+      /* =========================
+         INCREASE
+      ========================== */
+
+      if (change > 0) {
+
+        card.classList.add("increase");
+
+        price.textContent =
+          "+₱" + Math.abs(change).toFixed(2) + "/L";
+
+        label.textContent =
+          "Increase per liter";
+
+      }
+
+
+      /* =========================
+         DECREASE
+      ========================== */
+
+      else if (change < 0) {
+
+        card.classList.add("decrease");
+
+        price.textContent =
+          "−₱" + Math.abs(change).toFixed(2) + "/L";
+
+        label.textContent =
+          "Decrease per liter";
+
+      }
+
+
+      /* =========================
+         NO CHANGE
+      ========================== */
+
+      else {
+
+        card.classList.add("mixed");
+
+        price.textContent =
+          "₱0.00/L";
+
+        label.textContent =
+          "No change";
+
+      }
+
+    });
+
+
+    /* =========================
+       AUTOMATIC HEADER
+    ========================= */
+
+    const allIncrease =
+      changes.every(value => value > 0);
+
+    const allDecrease =
+      changes.every(value => value < 0);
+
+    const allNoChange =
+      changes.every(value => value === 0);
+
+
+    if (allIncrease) {
+
+      title.textContent =
+        "Fuel Price Increase";
+
+      subtitle.textContent =
+        "Fuel prices increased across all listed petroleum products.";
+
+      statusText.textContent =
+        "Price increase";
+
+    }
+
+    else if (allDecrease) {
+
+      title.textContent =
+        "Fuel Price Decrease";
+
+      subtitle.textContent =
+        "Fuel prices decreased across all listed petroleum products.";
+
+      statusText.textContent =
+        "Price decrease";
+
+    }
+
+    else if (allNoChange) {
+
+      title.textContent =
+        "No Fuel Price Change";
+
+      subtitle.textContent =
+        "No price adjustment was recorded for the listed products.";
+
+      statusText.textContent =
+        "No price change";
+
+    }
+
+    else {
+
+      title.textContent =
+        "Fuel Price Adjustment";
+
+      subtitle.textContent =
+        "Fuel prices recorded mixed adjustments.";
+
+      statusText.textContent =
+        "Mixed price adjustment";
+
+    }
+
+  </script>
+
+</body>
+</html>
