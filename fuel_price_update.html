@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <title>Fuel Price Update | October 2026</title>
+  <style>
+    /* =========================================================
+       FUEL PRICE UPDATE — PROFESSIONAL EDITABLE TEMPLATE
+       Edit the text in the HTML section and the CSS variables
+       below to customize the report.
+       ========================================================= */
+    :root {
+      --navy: #101827;
+      --navy-2: #17243a;
+      --blue: #2563eb;
+      --cyan: #38bdf8;
+      --ink: #182230;
+      --muted: #657184;
+      --paper: #f3f6fa;
+      --line: #e3e8ef;
+      --green: #15803d;
+      --red: #c24135;
+      --amber: #b7791f;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 28px 16px;
+      background: #e8edf4;
+      color: var(--ink);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+    }
+    .page {
+      width: min(100%, 980px);
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 18px 55px rgba(16, 24, 39, .16);
+    }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 42px 44px 38px;
+      color: var(--white);
+      background: linear-gradient(120deg, var(--navy), var(--navy-2) 68%, #203d62);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      right: -85px;
+      top: -155px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 50%;
+      box-shadow: 0 0 0 28px rgba(255,255,255,.035),
+                  0 0 0 58px rgba(255,255,255,.025);
+      pointer-events: none;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 16px;
+      color: #b8e7ff;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 3px;
+      background: var(--cyan);
+      border-radius: 5px;
+    }
+    h1 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      max-width: 720px;
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.03;
+      letter-spacing: -1.8px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .hero-subtitle {
+      position: relative;
+      z-index: 1;
+      margin: 15px 0 0;
+      color: #d4deeb;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .hero-meta {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 25px;
+    }
+    .pill {
+      padding: 9px 13px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      color: #f2f7fc;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    main { padding: 32px 36px 36px; }
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 0 0 17px;
+    }
+    .section-heading h2 {
+      margin: 0;
+      font-size: 19px;
+      letter-spacing: -.35px;
+    }
+    .section-heading p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .section-tag {
+      flex: 0 0 auto;
+      padding: 7px 10px;
+      border-radius: 7px;
+      background: #eaf2ff;
+      color: #1d4ed8;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .price-card {
+      padding: 20px 18px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: #fff;
+    }
+    .fuel-name {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.25px;
+      text-transform: uppercase;
+    }
+    .change {
+      margin-top: 12px;
+      font-size: clamp(27px, 4vw, 38px);
+      font-weight: 900;
+      letter-spacing: -1.4px;
+      line-height: 1.05;
+      white-space: nowrap;
+    }
+    .change.up { color: var(--red); }
+    .change.down { color: var(--green); }
+    .change.neutral { color: var(--muted); font-size: 27px; }
+    .card-caption[data-auto-caption="increase"] { color: var(--red); font-weight: 800; }
+    .card-caption[data-auto-caption="decrease"] { color: var(--green); font-weight: 800; }
+    .card-caption[data-auto-caption="neutral"] { color: var(--amber); font-weight: 800; }
+    .unit {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .card-caption {
+      margin-top: 15px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      color: #536174;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .divider {
+      height: 1px;
+      margin: 32px 0;
+      background: var(--line);
+    }
+    .forecast .section-tag {
+      background: #fff4dc;
+      color: #925c06;
+    }
+    .forecast .price-card {
+      background: linear-gradient(180deg, #fff 0%, #fffdfa 100%);
+    }
+    .forecast .change.up { color: var(--red); }
+    .forecast .change.down { color: var(--green); }
+    .forecast .change.neutral { color: var(--amber); }
+    .forecast-range {
+      font-size: clamp(23px, 3.5vw, 31px);
+      letter-spacing: -1px;
+    }
+    .notice {
+      display: flex;
+      gap: 12px;
+      margin-top: 26px;
+      padding: 15px 17px;
+      border: 1px solid #d9e8f8;
+      border-radius: 12px;
+      background: #f3f8ff;
+      color: #42536a;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .notice strong { color: #173d73; }
+    .notice-icon {
+      display: grid;
+      place-items: center;
+      flex: 0 0 27px;
+      width: 27px;
+      height: 27px;
+      border-radius: 50%;
+      background: #dcecff;
+      color: #1d4ed8;
+      font-weight: 900;
+    }
+    footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 19px 36px;
+      background: #f7f9fc;
+      border-top: 1px solid var(--line);
+      color: #6b7788;
+      font-size: 11px;
+    }
+    footer strong { color: #344256; }
+
+    /* Automatic adjustment colors: positive = increase (red),
+       negative = decrease (green), no signed value = neutral. */
+    .change[data-direction="increase"] { color: var(--red) !important; }
+    .change[data-direction="decrease"] { color: var(--green) !important; }
+    .change[data-direction="neutral"] { color: var(--muted) !important; }
+    .forecast .change[data-direction="neutral"] { color: var(--amber) !important; }
+
+    @media (max-width: 680px) {
+      body { padding: 12px; }
+      .page { border-radius: 15px; }
+      .hero { padding: 30px 23px 27px; }
+      main { padding: 25px 20px 27px; }
+      .price-grid { grid-template-columns: 1fr; }
+      .price-card { padding: 17px 18px; }
+      .change { font-size: 34px; }
+      .forecast-range { font-size: 29px; }
+      .divider { margin: 25px 0; }
+      footer { padding: 17px 20px; }
+    }
+    @media print {
+      body { padding: 0; background: #fff; }
+      .page { width: 100%; box-shadow: none; border-radius: 0; }
+      .hero, .pill, .section-tag, .notice, footer {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="eyebrow">Fuel Market Bulletin</div>
+      <h1>Fuel Price<br>Update</h1>
+      <p class="hero-subtitle">Official price adjustments and forecast movements for the Philippines.</p>
+      <div class="hero-meta">
+        <span class="pill">OCTOBER 6–12, 2026 · OFFICIAL</span>
+        <span class="pill">OCTOBER 13–19, 2026 · FORECAST</span>
+      </div>
+    </header>
+
+    <main>
+      <!-- OFFICIAL PRICE: Edit fuel names, amounts, labels, and notes below. -->
+      <section class="official">
+        <div class="section-heading">
+          <div>
+            <h2>Official Price Adjustment</h2>
+            <p>October 6–12, 2026</p>
+          </div>
+          <span class="section-tag">Official</span>
+        </div>
+
+        <div class="price-grid">
+          <article class="price-card">
+            <div class="fuel-name">Gasoline</div>
+            <div class="change">+₱1.30</div>
+            <div class="unit">per liter</div>
+            <div class="card-caption">Price increase</div>
+          </article>
+          <article class="price-card">
+            <div class="fuel-name">Diesel</div>
+            <div class="change">−₱1.20</div>
+            <div class="unit">per liter</div>
+            <div class="card-caption">Price decrease</div>
+          </article>
+          <article class="price-card">
+            <div class="fuel-name">Kerosene</div>
+            <div class="change">+₱3.30</div>
+            <div class="unit">per liter</div>
+            <div class="card-caption">Price increase</div>
+          </article>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- FORECAST: Forecast values are estimates, not confirmed official prices. -->
+      <section class="forecast">
+        <div class="section-heading">
+          <div>
+            <h2>Next Week’s Price Forecast</h2>
+            <p>October 13–19, 2026</p>
+          </div>
+          <span class="section-tag">Forecast</span>
+        </div>
+
+        <div class="price-grid">
+          <article class="price-card">
+            <div class="fuel-name">Gasoline</div>
+            <div class="change forecast-range">+₱2.00–2.20</div>
+            <div class="unit">per liter · estimated increase</div>
+            <div class="card-caption">Forecasted price hike</div>
+          </article>
+          <article class="price-card">
+            <div class="fuel-name">Diesel</div>
+            <div class="change forecast-range">−₱1.80–2.00</div>
+            <div class="unit">per liter · estimated decrease</div>
+            <div class="card-caption">Forecasted price rollback</div>
+          </article>
+          <article class="price-card">
+            <div class="fuel-name">Kerosene</div>
+            <div class="change">— — —</div>
+            <div class="unit">No forecast provided</div>
+            <div class="card-caption">Adjustment not specified</div>
+          </article>
+        </div>
+      </section>
+
+      <aside class="notice">
+        <div class="notice-icon">i</div>
+        <div><strong>Important:</strong> Forecast figures are estimates and may change. Wait for the official announcement from the Department of Energy (DOE) and oil companies for confirmed adjustments.</div>
+      </aside>
+    </main>
+
+    <footer>
+      <span><strong>FUEL PRICE UPDATE</strong> · Philippines</span>
+      <span>Amounts shown are price adjustments per liter, not pump prices.</span>
+    </footer>
+  </div>
+
+  <script>
+    // Auto-color all official and forecast adjustments from their signed values:
+    // + = increase/red; - = decrease/green; no signed number = neutral.
+    (function () {
+      document.querySelectorAll(".change").forEach(function (element) {
+        var valueText = element.textContent.replace(/−/g, "-").trim();
+        var match = valueText.match(/[+-]\s*₱?\s*\d+(?:[.,]\d+)?/);
+        var direction = "neutral";
+
+        if (match) {
+          var amount = parseFloat(match[0].replace(/[₱\s,]/g, ""));
+          direction = amount > 0 ? "increase" :
+                      amount < 0 ? "decrease" : "neutral";
+        }
+
+        element.dataset.direction = direction;
+
+        // Automatically set the caption text for both official and forecast cards.
+        var card = element.closest(".price-card");
+        var caption = card ? card.querySelector(".card-caption") : null;
+        if (caption) {
+          var isForecast = !!element.closest(".forecast");
+          if (direction === "increase") {
+            caption.textContent = isForecast ? "Forecasted price hike" : "Price increase";
+          } else if (direction === "decrease") {
+            caption.textContent = isForecast ? "Forecasted price rollback" : "Price decrease";
+          } else {
+            caption.textContent = isForecast ? "No forecast provided" : "No price change specified";
+          }
+          caption.dataset.autoCaption = direction;
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
